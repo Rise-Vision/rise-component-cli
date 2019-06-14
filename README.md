@@ -22,8 +22,8 @@ Run `npm run new` and follow the wizard.
 
 - After creating your repository on GitHub and pushing your changes, you will need to tell CircleCI to build your project
 - Since we depend on checking out other projects, you will need to go to `Settings => Permissions => Checkout SSH Keys` and add a new user key.
-- To run e2e tests, you will need to create a branch prefixed with `e2e/`. After building the first time, e2e tests should fail because the expected screenshot has not been setup. You can grab the expected screenshot from `test-e2e-electron-beta`, under the `containers` tab. This file will need to be uploaded to the `risevision-display-screenshots` with name matching the display ids previously created. If you had `RYARGCAQHWQ3` and `3KDV24T9TGEX`, you will need to upload `RYARGCAQHWQ3.jpg` and `3KDV24T9TGEX.jpg` (both files are copies of the expected image previously downloaded).
-- Re running the tests should succeeed.
+- To run e2e tests, you will need to create a branch prefixed with `e2e/`. After building the first time, e2e tests will fail because the expected screenshot has not been setup. You can grab the expected screenshot by opening the `test-e2e-electron-beta` workflow step, under the `containers` tab. This file will need to be uploaded to the `risevision-display-screenshots` with name matching the display ids previously created. If you had `RYARGCAQHWQ3` and `3KDV24T9TGEX`, you will need to upload `RYARGCAQHWQ3.jpg` and `3KDV24T9TGEX.jpg` (both files are copies of the expected image previously downloaded).
+- Re running the tests should now succeeed.
 
 ### General branch naming conventions
 
