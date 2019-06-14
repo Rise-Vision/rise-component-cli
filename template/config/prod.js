@@ -1,0 +1,7 @@
+const newComponentVariableConfig = {
+
+};
+
+export {
+  newComponentVariableConfig
+};
