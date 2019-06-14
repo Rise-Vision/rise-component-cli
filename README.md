@@ -16,7 +16,7 @@ Clone the repository and run `npm install`.
 
 ### Creating the project
 
-Run `npm run new` and follow the wizard.
+Run `npm run new` and follow the wizard. You can copy the generated code into the root of your repository.
 
 ### Extra steps after creating the project
 
