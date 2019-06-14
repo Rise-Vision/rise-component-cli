@@ -1,0 +1,16 @@
+{
+  "name": "rise-component-cli",
+  "version": "1.0.0",
+  "license": "GPL3",
+  "description": "Scaffold generator for Rise Polymer components",
+  "main": "index.js",
+  "scripts": {
+    "new": "node index.js new"
+  },
+  "dependencies": {
+    "fs-extra": "8.0.1",
+    "jshint": "^2.10.2",
+    "prompts": "2.1.0",
+    "replace-in-file": "4.1.0"
+  }
+}

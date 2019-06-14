@@ -1,0 +1,39 @@
+{
+  "name": "new-component-tag",
+  "version": "1.0.0",
+  "description": "new-component-name",
+  "scripts": {
+    "prebuild": "eslint .",
+    "build": "polymer build && ./node_modules/common-component/extract-source.sh new-component-tag",
+    "test": "eslint . && polymer test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rise-Vision/new-component-tag.git"
+  },
+  "keywords": [
+    "Rise",
+    "Vision",
+    "Digital",
+    "Signage",
+    "text"
+  ],
+  "author": "Rise Vision",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Rise-Vision/new-component-tag/issues"
+  },
+  "homepage": "https://github.com/Rise-Vision/new-component-tag/#readme",
+  "dependencies": {
+    "@polymer/polymer": "3.1.0",
+    "@webcomponents/webcomponentsjs": "^2.1.3",
+    "common-component": "git://github.com/Rise-Vision/common-component.git#v1.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
+  }
+}
