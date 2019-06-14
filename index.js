@@ -11,24 +11,24 @@ if (command === 'new') {
       type: 'text',
       name: 'newComponentTag',
       message: 'What is the tag name of the new component (e.g., rise-text)?',
-      initial: 'rise-text'
+      initial: 'rise-example-component'
     }, {
       type: 'text',
-      name: 'displayIdStage',
+      name: 'displayIdStable',
       message: 'What is the Display ID for Staging e2e tests?',
-      initial: 'display1'
+      initial: 'RYARGCAQHWQ3'
     }, {
       type: 'text',
       name: 'displayIdBeta',
       message: 'What is the Display ID for Beta e2e tests?',
-      initial: 'display2'
+      initial: '3KDV24T9TGEX'
     }
   ];
 
   (async () => {
-    const { newComponentTag, displayIdStage, displayIdBeta } = await prompts(questions);
+    const { newComponentTag, displayIdStable, displayIdBeta } = await prompts(questions);
 
-    if (!newComponentTag || !displayIdStage || !displayIdBeta) {
+    if (!newComponentTag || !displayIdStable || !displayIdBeta) {
       console.log('All the fields are required');
       return -1;
     }
@@ -61,8 +61,8 @@ if (command === 'new') {
         destinationDir + '/**/*',
         destinationDir + '/.circleci/*'
       ],
-      from: [ /new-component-tag/g, /NewComponentClass/g, /display-id-stage/g, /display-id-beta/g],
-      to: [ newComponentTag, newComponentClass, displayIdStage, displayIdBeta ]
+      from: [ /new-component-tag/g, /NewComponentClass/g, /display-id-stable/g, /display-id-beta/g],
+      to: [ newComponentTag, newComponentClass, displayIdStable, displayIdBeta ]
     });
   })();
 } else {

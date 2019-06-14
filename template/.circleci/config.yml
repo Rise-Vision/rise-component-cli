@@ -307,7 +307,7 @@ workflows:
                 - master
                 - /^e2e[/].*/
       - test-e2e-electron:
-          displayId: display-id-stage
+          displayId: display-id-stable
           installerPath: /
           name: test-e2e-electron-stable
           requires:
