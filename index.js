@@ -5,8 +5,6 @@ const replaceInFile = require('replace-in-file');
 var command  = (process.argv.length > 2 ? process.argv[2] : '').toLowerCase();
 
 if (command === 'new') {
-  console.log('Creating new project');
-
   const questions = [{
       type: 'text',
       name: 'newComponentTag',
@@ -15,20 +13,36 @@ if (command === 'new') {
     }, {
       type: 'text',
       name: 'displayIdStable',
-      message: 'What is the Display ID for Staging e2e tests?',
+      message: 'What is the Display ID for Stable e2e tests?',
       initial: 'RYARGCAQHWQ3'
     }, {
       type: 'text',
       name: 'displayIdBeta',
       message: 'What is the Display ID for Beta e2e tests?',
       initial: '3KDV24T9TGEX'
+    }, {
+      type: 'text',
+      name: 'facilitatorName',
+      message: 'What is your name? It will be used in the README\'s Facilitator section',
+      initial: 'Rise Vision'
+    }, {
+      type: 'text',
+      name: 'facilitatorGitHub',
+      message: 'What is your GitHub username? It will be used in the README\'s Facilitator section',
+      initial: 'rise-vision'
     }
   ];
 
   (async () => {
-    const { newComponentTag, displayIdStable, displayIdBeta } = await prompts(questions);
+    const {
+      newComponentTag,
+      displayIdStable,
+      displayIdBeta,
+      facilitatorName,
+      facilitatorGitHub,
+    } = await prompts(questions);
 
-    if (!newComponentTag || !displayIdStable || !displayIdBeta) {
+    if (!newComponentTag || !displayIdStable || !displayIdBeta || !facilitatorName || !facilitatorGitHub) {
       console.log('All the fields are required');
       return -1;
     }
@@ -56,15 +70,33 @@ if (command === 'new') {
       await fse.move(destinationDir + '/' + file, destinationDir + '/' + file.replace('new-component-tag', newComponentTag));
     }
     
-    // Replace template tag with real tag
+    // Replace placeholder fields with user provided values
     await replaceInFile({
       files: [
         destinationDir + '/**/*',
         destinationDir + '/.circleci/*'
       ],
-      from: [ /new-component-tag/g, /new-component-name/g, /NewComponentClass/g, /display-id-stable/g, /display-id-beta/g],
-      to: [ newComponentTag, newComponentName, newComponentClass, displayIdStable, displayIdBeta ]
+      from: [
+        /new-component-tag/g,
+        /new-component-name/g,
+        /NewComponentClass/g,
+        /display-id-stable/g,
+        /display-id-beta/g,
+        /facilitator-name/g,
+        /facilitator-github/g,
+      ],
+      to: [
+        newComponentTag,
+        newComponentName,
+        newComponentClass,
+        displayIdStable,
+        displayIdBeta,
+        facilitatorName,
+        facilitatorGitHub
+      ]
     });
+
+    console.log('You can find the generated project in build/' + newComponentTag);
   })();
 } else {
   console.log('Invalid command');
