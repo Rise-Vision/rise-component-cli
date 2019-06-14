@@ -7,7 +7,7 @@
 #### Example
 
 ```
-  <new-component-tag id="new-component-tag-id">
+  <new-component-tag id="new-component-tag-id" value="new-component-tag-value">
   </new-component-tag>
 ```
 
