@@ -33,7 +33,8 @@ if (command === 'new') {
       return -1;
     }
 
-    const newComponentClass = _tagToTitleCase(newComponentTag);
+    const newComponentName = _tagToTitleCase(newComponentTag, ' ');
+    const newComponentClass = _tagToTitleCase(newComponentTag, '');
     const sourceDir = process.cwd() + '/template';
     const destinationDir = process.cwd() + '/build/' + newComponentTag;
 
@@ -61,16 +62,16 @@ if (command === 'new') {
         destinationDir + '/**/*',
         destinationDir + '/.circleci/*'
       ],
-      from: [ /new-component-tag/g, /NewComponentClass/g, /display-id-stable/g, /display-id-beta/g],
-      to: [ newComponentTag, newComponentClass, displayIdStable, displayIdBeta ]
+      from: [ /new-component-tag/g, /new-component-name/g, /NewComponentClass/g, /display-id-stable/g, /display-id-beta/g],
+      to: [ newComponentTag, newComponentName, newComponentClass, displayIdStable, displayIdBeta ]
     });
   })();
 } else {
   console.log('Invalid command');
 }
 
-function _tagToTitleCase(value) {
+function _tagToTitleCase(value, outputDelimiter) {
   let parts = value.split('-');
 
-  return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+  return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(outputDelimiter);
 }
