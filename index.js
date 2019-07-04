@@ -62,6 +62,7 @@ if (command === 'new') {
       'demo/src/new-component-tag-dev.html',
       'e2e/new-component-tag.html',
       'src/new-component-tag.js',
+      'src/new-component-tag-version.js',
       'test/new-component-tag-test.html'
     ];
     for (const fileIdx in filesToRename) {

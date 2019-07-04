@@ -41,6 +41,9 @@ jobs:
           at: .
       - restore_cache:
           key: node-cache-{{ checksum "package.json" }}
+      - run: |
+          VERSION=$(cat version-string/version)
+          sed -i "s/__VERSION__/$VERSION/;" src/new-component-tag-version.js
       - run: npm run build
       - persist_to_workspace:
           root: .
@@ -108,12 +111,11 @@ jobs:
           key: node-cache-{{ checksum "package.json" }}
       - run: mkdir -p ~/.config
       - run: cp -r gcloud ~/.config
-      - run: npm install common-component
       - run: |
           VERSION=$(cat version-string/version)
           TARGET=$WIDGETS_BASE/staging/components/new-component-tag/$VERSION/
           echo Deploying version $VERSION to new-component-tag
-          node_modules/common-component/deploy-gcs.sh new-component-tag $TARGET
+          node_modules/rise-common-component/scripts/deploy-gcs.sh new-component-tag $TARGET
 
   deploy-e2e-page:
     parameters:
@@ -195,12 +197,11 @@ jobs:
           key: node-cache-{{ checksum "package.json" }}
       - run: mkdir -p ~/.config
       - run: cp -r gcloud ~/.config
-      - run: npm install common-component
       - run: |
           MAJOR=$(grep version package.json | grep -Po '[0-9]+' | head -1)
           TARGET=$WIDGETS_BASE/<< parameters.stage >>/components/new-component-tag/$MAJOR/
           echo Deploying << parameters.stage >> version of new-component-tag/$MAJOR
-          node_modules/common-component/deploy-gcs.sh new-component-tag $TARGET
+          node_modules/rise-common-component/scripts/deploy-gcs.sh new-component-tag $TARGET
 
 workflows:
   workflow1:
