@@ -13,6 +13,11 @@ Clone the repository and run `npm install`.
 - Create two Displays on https://apps.risevision.com, under Rise Vision company
   - Name the first one: 'Content E2E your-component-name beta electron ubuntu'
   - Name the second one: 'Content E2E your-component-name stable electron ubuntu'
+- Create one Schedule for each of those Displays
+  - Name them the same as their respective Display
+  - Add an URL Item, pointing to:
+    - Beta: https://widgets.risevision.com/beta/e2e/<component-name>/electron/e2e/<component-name>-electron.html
+    - Stable: https://widgets.risevision.com/stable/e2e/<component-name>/electron/e2e/<component-name>-electron.html
 
 ### Creating the project
 
@@ -22,7 +27,7 @@ Run `npm run new` and follow the wizard. You can copy the generated code into th
 
 - After creating your repository on GitHub and pushing your changes, you will need to tell CircleCI to build your project
 - Since we depend on checking out other projects, you will need to go to `Settings => Permissions => Checkout SSH Keys` and add a new user key.
-- To run e2e tests, you will need to create a branch prefixed with `e2e/`. After building the first time, e2e tests will fail because the expected screenshot has not been setup. You can grab the expected screenshot by opening the `test-e2e-electron-beta` workflow step, under the `containers` tab. This file will need to be uploaded to the `risevision-display-screenshots` with name matching the display ids previously created. If you had `RYARGCAQHWQ3` and `3KDV24T9TGEX`, you will need to upload `RYARGCAQHWQ3.jpg` and `3KDV24T9TGEX.jpg` (both files are copies of the expected image previously downloaded).
+- To run e2e tests, you will need to create a branch prefixed with `e2e/`. After building the first time, e2e tests will fail because the expected screenshot has not been setup. You can grab the expected screenshot by opening the `test-e2e-electron-beta` workflow step, under the `containers` tab. This file will need to be uploaded to the `risevision-display-screenshots` bucket (Display Storage Buckets project) with name matching the display ids previously created. If you had `RYARGCAQHWQ3` and `3KDV24T9TGEX`, you will need to upload `RYARGCAQHWQ3.jpg` and `3KDV24T9TGEX.jpg` (both files are copies of the expected image previously downloaded).
 - Re running the tests should now succeeed.
 
 ### General branch naming conventions
