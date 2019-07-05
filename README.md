@@ -16,8 +16,8 @@ Clone the repository and run `npm install`.
 - Create one Schedule for each of those Displays
   - Name them the same as their respective Display
   - Add an URL Item, pointing to:
-    - Beta: https://widgets.risevision.com/beta/e2e/<component-name>/electron/e2e/<component-name>-electron.html
-    - Stable: https://widgets.risevision.com/stable/e2e/<component-name>/electron/e2e/<component-name>-electron.html
+    - Beta: https://widgets.risevision.com/beta/e2e/your-component-name/electron/e2e/your-component-name-electron.html
+    - Stable: https://widgets.risevision.com/stable/e2e/your-component-name/electron/e2e/your-component-name-electron.html
 
 ### Creating the project
 
