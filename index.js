@@ -49,6 +49,7 @@ if (command === 'new') {
 
     const newComponentName = _tagToTitleCase(newComponentTag, ' ');
     const newComponentClass = _tagToTitleCase(newComponentTag, '');
+    const newComponentVar = _classNameToVarName(_tagToTitleCase(newComponentTag, ''));
     const sourceDir = process.cwd() + '/template';
     const destinationDir = process.cwd() + '/build/' + newComponentTag;
 
@@ -81,6 +82,7 @@ if (command === 'new') {
         /new-component-tag/g,
         /new-component-name/g,
         /NewComponentClass/g,
+        /newComponentVar/g,
         /display-id-stable/g,
         /display-id-beta/g,
         /facilitator-name/g,
@@ -90,6 +92,7 @@ if (command === 'new') {
         newComponentTag,
         newComponentName,
         newComponentClass,
+        newComponentVar,
         displayIdStable,
         displayIdBeta,
         facilitatorName,
@@ -107,4 +110,8 @@ function _tagToTitleCase(value, outputDelimiter) {
   let parts = value.split('-');
 
   return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(outputDelimiter);
+}
+
+function _classNameToVarName(name) {
+  return name.charAt(0).toLowerCase() + name.slice(1);
 }
